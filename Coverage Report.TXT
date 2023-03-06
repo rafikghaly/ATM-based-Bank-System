@@ -1,0 +1,1411 @@
+# Reading C:/questasim64_10.7c/tcl/vsim/pref.tcl
+# //  Questa Sim-64
+# //  Version 10.7c win64 Aug 18 2018
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# Loading project ATM
+vsim -voptargs=+acc work.ATM_tb
+# vsim -voptargs="+acc" work.ATM_tb 
+# Start time: 22:12:33 on Dec 18,2022
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading work.ATM_tb(fast)
+# Loading work.MainModule(fast)
+do ATM.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# QuestaSim-64 vlog 10.7c Compiler 2018.08 Aug 18 2018
+# Start time: 22:12:41 on Dec 18,2022
+# vlog -reportprogress 300 MainModule.v ATM_tb.v "+cover" -covercells 
+# -- Compiling module MainModule
+# -- Compiling module ATM_tb
+# 
+# Top level modules:
+# 	ATM_tb
+# End time: 22:12:41 on Dec 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 22:12:41 on Dec 18,2022, Elapsed time: 0:00:08
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.ATM_tb -coverage 
+# Start time: 22:12:41 on Dec 18,2022
+# ** Note: (vsim-8009) Loading existing optimized design _opt3
+# Loading work.ATM_tb(fast)
+# Loading work.MainModule(fast)
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Khalil  Hostname: LAPTOP-LI6EE08L  ProcessID: 13908
+#           Attempting to use alternate WLF file "./wlftrajj0i".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftrajj0i
+# first test finished
+# Second test finished
+# Third test finished
+# ** Error: Assertion failed
+#    Time: 569916 ns Started: 569916 ns  Scope: /ATM_tb/uut/assert__2 File: MainModule.v Line: 43
+# Last test finished
+# ** Note: $stop    : ATM_tb.v(242)
+#    Time: 577404 ns  Iteration: 0  Instance: /ATM_tb
+# Break in Module ATM_tb at ATM_tb.v line 242
+vcover report ATM_tb.ucdb -details -all
+# QuestaSim-64 vcover 10.7c Coverage Utility 2018.08 Aug 18 2018
+# Start time: 22:13:01 on Dec 18,2022
+# vcover report ATM_tb.ucdb -details -all 
+# Coverage Report by file with details
+# 
+# =================================================================================
+# === File: ATM_tb.v
+# =================================================================================
+# Statement Coverage:
+#     Enabled Coverage            Active      Hits    Misses % Covered
+#     ----------------            ------      ----    ------ ---------
+#     Stmts                          136       136         0    100.00
+# 
+# ================================Statement Details================================
+# 
+# Statement Coverage for file ATM_tb.v --
+# 
+#     1                                                `timescale 1ns / 1ps
+#     2                                                
+#     3                                                ////////////////////////////////////////////////////////////////////////////////
+#     4                                                // Company: 
+#     5                                                // Engineer:
+#     6                                                //
+#     7                                                // Create Date:   15:01:53 12/14/2022
+#     8                                                // Design Name:   MainModule
+#     9                                                // Module Name:   D:/Ain Shams University/Junior/Electronic Design Automation/Project/V2.0/EDA1.0/ATM_tb.v
+#     10                                               // Project Name:  EDA1.0
+#     11                                               // Target Device:  
+#     12                                               // Tool versions:  
+#     13                                               // Description: 
+#     14                                               //
+#     15                                               // Verilog Test Fixture created by ISE for module: MainModule
+#     16                                               //
+#     17                                               // Dependencies:
+#     18                                               // 
+#     19                                               // Revision:
+#     20                                               // Revision 0.01 - File Created
+#     21                                               // Additional Comments:
+#     22                                               // 
+#     23                                               ////////////////////////////////////////////////////////////////////////////////
+#     24                                               
+#     25                                               module ATM_tb();
+#     26                                               
+#     27                                               	// Inputs
+#     28                                               	reg clk;
+#     29                                               	reg rst;
+#     30                                               	reg [3:0] Pin;
+#     31                                               	reg [5:0] WithDraw_Amount;
+#     32                                               	reg [4:0] Deposit_Amount;
+#     33                                               	reg [1:0] Operation;
+#     34                                               	reg IC;
+#     35                                               	reg LC;
+#     36                                               	reg Ex;
+#     37                                               	integer numofoperations;
+#     38                                               	reg goMain;
+#     39                                               	integer j, decision, ran;
+#     40                                               	// Outputs
+#     41                                               	wire [7:0] FinalBalance, CB
+#     42                                               	;
+#     43                                               
+#     44                                               	// Instantiate the Unit Under Test (UUT)
+#     45                                               	MainModule uut (
+#     46                                               		.clk(clk), 
+#     47                                               		.rst(rst), 
+#     48                                               		.Pin(Pin), 
+#     49                                               		.WithDraw_Amount(WithDraw_Amount), 
+#     50                                               		.Deposit_Amount(Deposit_Amount), 
+#     51                                               		.Operation(Operation), 
+#     52                                               		.FinalBalance(FinalBalance),
+#     53                                               		.CB(CB),
+#     54                                               		.IC(IC), 
+#     55                                               		.LC(LC), 
+#     56                                               		.Ex(Ex),
+#     57                                               		.goMain(goMain)
+#     58                                               	);
+#     59                                               	//Clock Generation
+#     60              1                      48118     	always #12 clk = !clk;
+#     60              2                      48117     
+#     61                                               	
+#     62                                               	//Assertions
+#     63                                               	//else $error("Error, Balance less than zero");
+#     64                                               	initial begin
+#     65                                               		// Initialize all Inputs by zero
+#     66              1                          1     		clk = 0;					//Clock
+#     67              1                          1     		rst = 0;					//Reset
+#     68              1                          1     		Pin = 0;					//input pin to login
+#     69              1                          1     		WithDraw_Amount = 0;		
+#     70              1                          1     		Deposit_Amount = 0;
+#     71              1                          1     		Operation = 0;				//operation Key: 0 -> withdraw, 1 -> deposit, 2 -> check balance, otherwise -> Exit
+#     72              1                          1     		IC = 0;						//To insert card
+#     73              1                          1     		LC = 0;						//To choose language 
+#     74              1                          1     		Ex = 0;						//To exit
+#     75              1                          1     		numofoperations = 0;		//counter for number of operations
+#     76              1                          1     		ran = 0;					//varible to hold random numbers
+#     77              1                          1     		goMain = 0;					//to return to the main menu and do another operation
+#     78              1                          1     		j = 0;						//counter of iterations
+#     79              1                          1     		decision=0;					//random number to decide the decision
+#     80                                               			
+#     81                                               		
+#     82                                               		/***
+#     83                                               		directed Randomized generator to test almost all possiblites of the desgin
+#     84                                               		the flow is customized to not reset the design, although it test all other Statments and braches
+#     85                                               		not including reseting or card inserting or language choosen
+#     86                                               		
+#     87                                               		each iterations is like one client doing a randomized number of operations
+#     88                                               		the last operation is to exit the ATM as default
+#     89                                               		***/
+#     90                                               		
+#     91                                               		
+#     92                                               		//directed testing
+#     93                                               		
+#     94              1                          1     		#50 rst = 1;
+#     94              2                          1     
+#     95              1                          1     		#50 rst = 0;
+#     95              2                          1     
+#     96                                               		
+#     97              1                          1     		#50 IC = 1; LC = 1;
+#     97              2                          1     
+#     97              3                          1     
+#     98              1                          1     		#50 Pin = 4'b1101;
+#     98              2                          1     
+#     99              1                          1     			Operation = 2;
+#     100             1                          1     			rst = 1;
+#     101                                              			
+#     102             1                          1     		#50 rst = 0;
+#     102             2                          1     
+#     103                                              		
+#     104             1                          1     		#50 IC = 1; LC = 1;
+#     104             2                          1     
+#     104             3                          1     
+#     105             1                          1     		#50 Pin = 4'b1101;
+#     105             2                          1     
+#     106             1                          1     			Operation = 2;
+#     107             1                          1     		#50	Operation = 3;
+#     107             2                          1     
+#     108                                              	
+#     109             1                          1     		$display("first test finished");
+#     110                                              
+#     111                                              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#     112                                              
+#     113             1                          1     		#50 rst = 1;
+#     113             2                          1     
+#     114             1                          1     		#50 rst = 0;
+#     114             2                          1     
+#     115                                              		
+#     116             1                          1     		for(j=0;j<1000;j=j+1)
+#     116             2                       1000     
+#     117                                              		begin
+#     118             1                       1000     			#25 IC = 1;				//default IC
+#     118             2                       1000     
+#     119             1                       1000     			#25 LC = 1;				//default LC
+#     119             2                       1000     
+#     120             1                       1000     			#25 Pin = 4'b1101;		// 4/30 probability to randomize the pin
+#     120             2                       1000     
+#     121             1                       1000     			ran = {$random}%30;
+#     122                                              			if(ran > 25)
+#     123             1                        142     				Pin = {$random}%16;
+#     124                                              				
+#     125             1                       1000     			numofoperations = 1 + {$random}%5;		//varied from 1 to 5
+#     126             1                       1000     			#2;
+#     127             1                       4037     			while(numofoperations > 2'b00)			//loop till excuating all the operations
+#     128                                              			begin
+#     129                                              				if(numofoperations == 1'b1)			//the last operation is to exit as defualt
+#     130             1                       1000     					#25 Operation = 2'b11;			//exit operation and return to reset
+#     130             2                       1000     
+#     131                                              				else
+#     132                                              				begin
+#     133             1                       2037     					#25 Operation = {$random}%3;	//operation from 0 ot 2
+#     133             2                       2037     
+#     134                                              					if(Operation == 2'b00)			//if withdraw
+#     135                                              					begin
+#     136                                              						//first, randomize the withdraw amount
+#     137             1                        680     						#25 WithDraw_Amount = {$random}%64;
+#     137             2                        680     
+#     138                                              						
+#     139             1                       1347     						while(WithDraw_Amount>CB)	//if not valid
+#     140                                              						begin
+#     141                                              							//randomized range from 0 to 39 to decide to enter another value or to leave
+#     142             1                        667     							#50 decision = {$random}%40;
+#     142             2                        667     
+#     143                                              							if(decision < 30)						//	3/4 percent to enter another value
+#     144             1                        504     							    #25 WithDraw_Amount = {$random}%64;
+#     144             2                        504     
+#     145                                              							else
+#     146                                              							begin
+#     147             1                        163     								#25 goMain = 1'b1;					// 1/4 percent to return to the main menu
+#     147             2                        163     
+#     148             1                        163     									WithDraw_Amount = 0;
+#     149             1                        163     							    #25 goMain = 1'b0;
+#     149             2                        163     
+#     150                                              							end
+#     151                                              						end
+#     152                                              					end
+#     153                                              					else if(Operation == 2'b01)						// if to deposit
+#     154                                              					begin
+#     155             1                        678     						 #25 Deposit_Amount = {$random}%32;			// randomize the deposit amount
+#     155             2                        678     
+#     156                                              					end
+#     157                                              				end
+#     158                                              				
+#     159             1                       3037     				#25 numofoperations = numofoperations - 3'b001;		//decrement the number of remaining operations
+#     159             2                       3037     
+#     160                                              			end
+#     161                                              		end
+#     162                                              		
+#     163             1                          1     		$display("Second test finished");
+#     164                                              		
+#     165                                              		
+#     166                                              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#     167                                              		
+#     168                                              		
+#     169                                              		//randomize the IC, LC, reseting in different states
+#     170                                              		
+#     171             1                          1     		#1 rst = 1;
+#     171             2                          1     
+#     172             1                          1     		#1 rst = 0;
+#     172             2                          1     
+#     173                                              		
+#     174             1                          1     		for(j=0;j<10000;j=j+1)
+#     174             2                      10000     
+#     175                                              		begin
+#     176             1                      10000     			rst = 0;
+#     177             1                      10000     			ran = {$random}%30;
+#     178             1                      10000     			#2	IC = {$random}%2;
+#     178             2                      10000     
+#     179             1                      10000     			#2	if(ran > 20)
+#     180             1                       3081     					rst = 1;			
+#     181             1                      10000     			#2	LC = {$random}%2; 
+#     181             2                      10000     
+#     182             1                      10000     			#2	if(ran > 20)
+#     183             1                       3081     					rst = 1;
+#     184             1                      10000     			#2	Pin = 4'b1101;
+#     184             2                      10000     
+#     185                                              				if(ran > 10)
+#     186             1                       6323     					Pin = {$random}%16;
+#     187             1                      10000     			#2	if(ran > 20)
+#     188             1                       3081     					rst = 1;
+#     189                                              				
+#     190             1                      10000     			#2	Operation = {$random}%3;
+#     190             2                      10000     
+#     191             1                      10000     				ran = {$random}%30;
+#     192             1                      10000     			#2	if(ran > 20)
+#     193             1                       3041     					rst = 1;
+#     194                                              			
+#     195             1                      10000     			#2	WithDraw_Amount = {$random}%64;
+#     195             2                      10000     
+#     196             1                      10000     				goMain = {$random}%2;
+#     197             1                      10000     			    Deposit_Amount = {$random}%32;
+#     198             1                      10000     				ran = {$random}%30;
+#     199             1                      10000     				#2	if(ran > 20)
+#     200             1                       2950     					rst = 1;
+#     201                                              				
+#     202             1                      10000     			#2	Operation = 2'b01;
+#     202             2                      10000     
+#     203             1                      10000     				ran = {$random}%30;
+#     204             1                      10000     			#2	if(ran > 20)
+#     205             1                       3001     					rst = 1;
+#     206                                              			   
+#     207                                              		end
+#     208                                              
+#     209                                              
+#     210             1                          1     		$display("Third test finished");
+#     211                                              
+#     212                                              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#     213                                              
+#     214                                              
+#     215                                              		
+#     216             1                          1     		#1 rst = 1;
+#     216             2                          1     
+#     217             1                          1     		#1 rst = 0;
+#     217             2                          1     
+#     218                                              		
+#     219             1                          1     		for(j=0;j<10000;j=j+1)
+#     219             2                      10000     
+#     220                                              		begin
+#     221             1                      10000     			rst = 0;
+#     222             1                      10000     			ran = {$random}%30;
+#     223             1                      10000     			IC = {$random}%2; 
+#     224             1                      10000     			LC = {$random}%2; 
+#     225             1                      10000     			Ex = {$random}%2; 
+#     226             1                      10000     			Pin = 4'b1101;
+#     227                                              			if(ran > 10)
+#     228             1                       6313     				Pin = {$random}%16;
+#     229             1                      10000     			Operation = {$random}%3;
+#     230             1                      10000     			WithDraw_Amount = {$random}%64;
+#     231             1                      10000     			goMain = {$random}%2;
+#     232             1                      10000     			Deposit_Amount = {$random}%32;
+#     233                                              			
+#     234             1                      10000     			#2	Operation = 2'b11;
+#     234             2                      10000     
+#     235                                              			   
+#     236                                              		end
+#     237                                              		
+#     238                                              		
+#     239             1                          1     		$display("Last test finished");
+#     240                                              
+#     241                                              		
+#     242             1                          1     		$stop;
+#     243                                              	end
+#     244                                                    
+#     245                                              endmodule
+#     246                                              
+#     247                                              /*
+#     248                                              vcover report ATM_tb.ucdb -details -all
+#     249                                              */
+#     250                                              
+#     251                                              
+#     252                                              
+#     253                                              
+#     254                                              
+#     255                                              
+# 
+# Branch Coverage:
+#     Enabled Coverage            Active      Hits    Misses % Covered
+#     ----------------            ------      ----    ------ ---------
+#     Branches                        25        25         0    100.00
+# 
+# ================================Branch Details================================
+# 
+# Branch Coverage for file ATM_tb.v --
+# 
+# ------------------------------------IF Branch------------------------------------
+#     122                                     1000     Count coming in to IF
+#     122             1                        142     			if(ran > 25)
+#                                              858     All False Count
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     129                                     3037     Count coming in to IF
+#     129             1                       1000     				if(numofoperations == 1'b1)			//the last operation is to exit as defualt
+#     131             1                       2037     				else
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     134                                     2037     Count coming in to IF
+#     134             1                        680     					if(Operation == 2'b00)			//if withdraw
+#     153             1                        678     					else if(Operation == 2'b01)						// if to deposit
+#                                              679     All False Count
+# Branch totals: 3 hits of 3 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     143                                      667     Count coming in to IF
+#     143             1                        504     							if(decision < 30)						//	3/4 percent to enter another value
+#     145             1                        163     							else
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     179                                    10000     Count coming in to IF
+#     179             1                       3081     			#2	if(ran > 20)
+#                                             6919     All False Count
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     182                                    10000     Count coming in to IF
+#     182             1                       3081     			#2	if(ran > 20)
+#                                             6919     All False Count
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     185                                    10000     Count coming in to IF
+#     185             1                       6323     				if(ran > 10)
+#                                             3677     All False Count
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     187                                    10000     Count coming in to IF
+#     187             1                       3081     			#2	if(ran > 20)
+#                                             6919     All False Count
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     192                                    10000     Count coming in to IF
+#     192             1                       3041     			#2	if(ran > 20)
+#                                             6959     All False Count
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     199                                    10000     Count coming in to IF
+#     199             1                       2950     				#2	if(ran > 20)
+#                                             7050     All False Count
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     204                                    10000     Count coming in to IF
+#     204             1                       3001     			#2	if(ran > 20)
+#                                             6999     All False Count
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     227                                    10000     Count coming in to IF
+#     227             1                       6313     			if(ran > 10)
+#                                             3687     All False Count
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# 
+# Condition Coverage:
+#     Enabled Coverage            Active   Covered    Misses % Covered
+#     ----------------            ------      ----    ------ ---------
+#     FEC Condition Terms             14        14         0    100.00
+# 
+# ================================Condition Details================================
+# 
+# Condition Coverage for file ATM_tb.v --
+# 
+# ----------------Focused Condition View-------------------
+# Line       122 Item    1  (ran > 25)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#   (ran > 25)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (ran > 25)_0          -                             
+#   Row   2:          1  (ran > 25)_1          -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       127 Item    1  (numofoperations > 0)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#              Input Term   Covered  Reason for no coverage   Hint
+#             -----------  --------  -----------------------  --------------
+#   (numofoperations > 0)         Y
+# 
+#      Rows:       Hits  FEC Target               Non-masking condition(s)      
+#  ---------  ---------  --------------------     -------------------------     
+#   Row   1:          1  (numofoperations > 0)_0  -                             
+#   Row   2:          1  (numofoperations > 0)_1  -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       134 Item    1  (Operation == 0)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#         Input Term   Covered  Reason for no coverage   Hint
+#        -----------  --------  -----------------------  --------------
+#   (Operation == 0)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (Operation == 0)_0    -                             
+#   Row   2:          1  (Operation == 0)_1    -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       139 Item    1  (WithDraw_Amount > CB)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#               Input Term   Covered  Reason for no coverage   Hint
+#              -----------  --------  -----------------------  --------------
+#   (WithDraw_Amount > CB)         Y
+# 
+#      Rows:       Hits  FEC Target                Non-masking condition(s)      
+#  ---------  ---------  --------------------      -------------------------     
+#   Row   1:          1  (WithDraw_Amount > CB)_0  -                             
+#   Row   2:          1  (WithDraw_Amount > CB)_1  -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       143 Item    1  (decision < 30)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#        Input Term   Covered  Reason for no coverage   Hint
+#       -----------  --------  -----------------------  --------------
+#   (decision < 30)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (decision < 30)_0     -                             
+#   Row   2:          1  (decision < 30)_1     -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       153 Item    1  (Operation == 1)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#         Input Term   Covered  Reason for no coverage   Hint
+#        -----------  --------  -----------------------  --------------
+#   (Operation == 1)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (Operation == 1)_0    -                             
+#   Row   2:          1  (Operation == 1)_1    -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       179 Item    1  (ran > 20)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#   (ran > 20)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (ran > 20)_0          -                             
+#   Row   2:          1  (ran > 20)_1          -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       182 Item    1  (ran > 20)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#   (ran > 20)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (ran > 20)_0          -                             
+#   Row   2:          1  (ran > 20)_1          -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       185 Item    1  (ran > 10)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#   (ran > 10)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (ran > 10)_0          -                             
+#   Row   2:          1  (ran > 10)_1          -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       187 Item    1  (ran > 20)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#   (ran > 20)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (ran > 20)_0          -                             
+#   Row   2:          1  (ran > 20)_1          -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       192 Item    1  (ran > 20)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#   (ran > 20)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (ran > 20)_0          -                             
+#   Row   2:          1  (ran > 20)_1          -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       199 Item    1  (ran > 20)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#   (ran > 20)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (ran > 20)_0          -                             
+#   Row   2:          1  (ran > 20)_1          -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       204 Item    1  (ran > 20)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#   (ran > 20)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (ran > 20)_0          -                             
+#   Row   2:          1  (ran > 20)_1          -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       227 Item    1  (ran > 10)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#   (ran > 10)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (ran > 10)_0          -                             
+#   Row   2:          1  (ran > 10)_1          -                             
+# 
+# 
+# Toggle Coverage:
+#     Enabled Coverage            Active      Hits    Misses % Covered
+#     ----------------            ------      ----    ------ ---------
+#     Toggle Bins                    334       134       200     40.11
+# 
+# ================================Toggle Details================================
+# 
+# Toggle Coverage for File ATM_tb.v --
+# 
+#        Line                                   Node      1H->0L      0L->1H  "Coverage"
+# --------------------------------------------------------------------------------------
+#          28                                    clk           1           1      100.00 
+#          29                                    rst           1           1      100.00 
+#          30                                 Pin[3]           1           1      100.00 
+#          30                                 Pin[2]           1           1      100.00 
+#          30                                 Pin[1]           1           1      100.00 
+#          30                                 Pin[0]           1           1      100.00 
+#          31                     WithDraw_Amount[5]           1           1      100.00 
+#          31                     WithDraw_Amount[4]           1           1      100.00 
+#          31                     WithDraw_Amount[3]           1           1      100.00 
+#          31                     WithDraw_Amount[2]           1           1      100.00 
+#          31                     WithDraw_Amount[1]           1           1      100.00 
+#          31                     WithDraw_Amount[0]           1           1      100.00 
+#          32                      Deposit_Amount[4]           1           1      100.00 
+#          32                      Deposit_Amount[3]           1           1      100.00 
+#          32                      Deposit_Amount[2]           1           1      100.00 
+#          32                      Deposit_Amount[1]           1           1      100.00 
+#          32                      Deposit_Amount[0]           1           1      100.00 
+#          33                           Operation[1]           1           1      100.00 
+#          33                           Operation[0]           1           1      100.00 
+#          34                                     IC           1           1      100.00 
+#          35                                     LC           1           1      100.00 
+#          36                                     Ex           1           1      100.00 
+#          37                     numofoperations[9]           0           0        0.00 
+#          37                     numofoperations[8]           0           0        0.00 
+#          37                     numofoperations[7]           0           0        0.00 
+#          37                     numofoperations[6]           0           0        0.00 
+#          37                     numofoperations[5]           0           0        0.00 
+#          37                     numofoperations[4]           0           0        0.00 
+#          37                     numofoperations[3]           0           0        0.00 
+#          37                    numofoperations[31]           0           0        0.00 
+#          37                    numofoperations[30]           0           0        0.00 
+#          37                     numofoperations[2]           1           1      100.00 
+#          37                    numofoperations[29]           0           0        0.00 
+#          37                    numofoperations[28]           0           0        0.00 
+#          37                    numofoperations[27]           0           0        0.00 
+#          37                    numofoperations[26]           0           0        0.00 
+#          37                    numofoperations[25]           0           0        0.00 
+#          37                    numofoperations[24]           0           0        0.00 
+#          37                    numofoperations[23]           0           0        0.00 
+#          37                    numofoperations[22]           0           0        0.00 
+#          37                    numofoperations[21]           0           0        0.00 
+#          37                    numofoperations[20]           0           0        0.00 
+#          37                     numofoperations[1]           1           1      100.00 
+#          37                    numofoperations[19]           0           0        0.00 
+#          37                    numofoperations[18]           0           0        0.00 
+#          37                    numofoperations[17]           0           0        0.00 
+#          37                    numofoperations[16]           0           0        0.00 
+#          37                    numofoperations[15]           0           0        0.00 
+#          37                    numofoperations[14]           0           0        0.00 
+#          37                    numofoperations[13]           0           0        0.00 
+#          37                    numofoperations[12]           0           0        0.00 
+#          37                    numofoperations[11]           0           0        0.00 
+#          37                    numofoperations[10]           0           0        0.00 
+#          37                     numofoperations[0]           1           1      100.00 
+#          38                                 goMain           1           1      100.00 
+#          39                                 ran[9]           0           0        0.00 
+#          39                                 ran[8]           0           0        0.00 
+#          39                                 ran[7]           0           0        0.00 
+#          39                                 ran[6]           0           0        0.00 
+#          39                                 ran[5]           0           0        0.00 
+#          39                                 ran[4]           1           1      100.00 
+#          39                                 ran[3]           1           1      100.00 
+#          39                                ran[31]           0           0        0.00 
+#          39                                ran[30]           0           0        0.00 
+#          39                                 ran[2]           1           1      100.00 
+#          39                                ran[29]           0           0        0.00 
+#          39                                ran[28]           0           0        0.00 
+#          39                                ran[27]           0           0        0.00 
+#          39                                ran[26]           0           0        0.00 
+#          39                                ran[25]           0           0        0.00 
+#          39                                ran[24]           0           0        0.00 
+#          39                                ran[23]           0           0        0.00 
+#          39                                ran[22]           0           0        0.00 
+#          39                                ran[21]           0           0        0.00 
+#          39                                ran[20]           0           0        0.00 
+#          39                                 ran[1]           1           1      100.00 
+#          39                                ran[19]           0           0        0.00 
+#          39                                ran[18]           0           0        0.00 
+#          39                                ran[17]           0           0        0.00 
+#          39                                ran[16]           0           0        0.00 
+#          39                                ran[15]           0           0        0.00 
+#          39                                ran[14]           0           0        0.00 
+#          39                                ran[13]           0           0        0.00 
+#          39                                ran[12]           0           0        0.00 
+#          39                                ran[11]           0           0        0.00 
+#          39                                ran[10]           0           0        0.00 
+#          39                                 ran[0]           1           1      100.00 
+#          39                                   j[9]           1           1      100.00 
+#          39                                   j[8]           1           1      100.00 
+#          39                                   j[7]           1           1      100.00 
+#          39                                   j[6]           1           1      100.00 
+#          39                                   j[5]           1           1      100.00 
+#          39                                   j[4]           1           1      100.00 
+#          39                                   j[3]           1           1      100.00 
+#          39                                  j[31]           0           0        0.00 
+#          39                                  j[30]           0           0        0.00 
+#          39                                   j[2]           1           1      100.00 
+#          39                                  j[29]           0           0        0.00 
+#          39                                  j[28]           0           0        0.00 
+#          39                                  j[27]           0           0        0.00 
+#          39                                  j[26]           0           0        0.00 
+#          39                                  j[25]           0           0        0.00 
+#          39                                  j[24]           0           0        0.00 
+#          39                                  j[23]           0           0        0.00 
+#          39                                  j[22]           0           0        0.00 
+#          39                                  j[21]           0           0        0.00 
+#          39                                  j[20]           0           0        0.00 
+#          39                                   j[1]           1           1      100.00 
+#          39                                  j[19]           0           0        0.00 
+#          39                                  j[18]           0           0        0.00 
+#          39                                  j[17]           0           0        0.00 
+#          39                                  j[16]           0           0        0.00 
+#          39                                  j[15]           0           0        0.00 
+#          39                                  j[14]           0           0        0.00 
+#          39                                  j[13]           1           1      100.00 
+#          39                                  j[12]           1           1      100.00 
+#          39                                  j[11]           1           1      100.00 
+#          39                                  j[10]           1           1      100.00 
+#          39                                   j[0]           1           1      100.00 
+#          39                            decision[9]           0           0        0.00 
+#          39                            decision[8]           0           0        0.00 
+#          39                            decision[7]           0           0        0.00 
+#          39                            decision[6]           0           0        0.00 
+#          39                            decision[5]           1           1      100.00 
+#          39                            decision[4]           1           1      100.00 
+#          39                            decision[3]           1           1      100.00 
+#          39                           decision[31]           0           0        0.00 
+#          39                           decision[30]           0           0        0.00 
+#          39                            decision[2]           1           1      100.00 
+#          39                           decision[29]           0           0        0.00 
+#          39                           decision[28]           0           0        0.00 
+#          39                           decision[27]           0           0        0.00 
+#          39                           decision[26]           0           0        0.00 
+#          39                           decision[25]           0           0        0.00 
+#          39                           decision[24]           0           0        0.00 
+#          39                           decision[23]           0           0        0.00 
+#          39                           decision[22]           0           0        0.00 
+#          39                           decision[21]           0           0        0.00 
+#          39                           decision[20]           0           0        0.00 
+#          39                            decision[1]           1           1      100.00 
+#          39                           decision[19]           0           0        0.00 
+#          39                           decision[18]           0           0        0.00 
+#          39                           decision[17]           0           0        0.00 
+#          39                           decision[16]           0           0        0.00 
+#          39                           decision[15]           0           0        0.00 
+#          39                           decision[14]           0           0        0.00 
+#          39                           decision[13]           0           0        0.00 
+#          39                           decision[12]           0           0        0.00 
+#          39                           decision[11]           0           0        0.00 
+#          39                           decision[10]           0           0        0.00 
+#          39                            decision[0]           1           1      100.00 
+#          41                        FinalBalance[7]           1           1      100.00 
+#          41                        FinalBalance[6]           1           1      100.00 
+#          41                        FinalBalance[5]           1           1      100.00 
+#          41                        FinalBalance[4]           1           1      100.00 
+#          41                        FinalBalance[3]           1           1      100.00 
+#          41                        FinalBalance[2]           1           1      100.00 
+#          41                        FinalBalance[1]           1           1      100.00 
+#          41                        FinalBalance[0]           1           1      100.00 
+#          41                                  CB[7]           1           1      100.00 
+#          41                                  CB[6]           1           1      100.00 
+#          41                                  CB[5]           1           1      100.00 
+#          41                                  CB[4]           1           1      100.00 
+#          41                                  CB[3]           1           1      100.00 
+#          41                                  CB[2]           1           1      100.00 
+#          41                                  CB[1]           1           1      100.00 
+#          41                                  CB[0]           1           1      100.00 
+# 
+# Total Node Count     =        167 
+# Toggled Node Count   =         67 
+# Untoggled Node Count =        100 
+# 
+# Toggle Coverage      =      40.11% (134 of 334 bins)
+# 
+# =================================================================================
+# === File: MainModule.v
+# =================================================================================
+# Statement Coverage:
+#     Enabled Coverage            Active      Hits    Misses % Covered
+#     ----------------            ------      ----    ------ ---------
+#     Stmts                           59        59         0    100.00
+# 
+# ================================Statement Details================================
+# 
+# Statement Coverage for file MainModule.v --
+# 
+#     1                                                `timescale 1ns / 1ps
+#     2                                                module MainModule(
+#     3                                                    input clk,
+#     4                                                	input rst,
+#     5                                                    input [3:0] Pin,
+#     6                                                	input [5:0] WithDraw_Amount,
+#     7                                                	input [4:0] Deposit_Amount,
+#     8                                                	input [1:0] Operation,
+#     9                                                	output reg[7:0] FinalBalance, CB,// الاستعلام
+#     10                                               	input IC , LC ,Ex, goMain	 //InsertCard,LanguageChosen,Exit
+#     11                                                   );
+#     12              1                          1     reg [3:0] pin_number = 4'b1101;	 //default password
+#     13              1                          1     reg [7:0] balance = 8'd50;
+#     14                                               reg [3:0] next_state;
+#     15                                               reg [3:0] current_state;
+#     16              1                          1     reg [1:0] Counter = 2'b00;
+#     17                                               reg [1:0] op;
+#     18              1                          1     reg	VP= 1'b0,BC= 1'b0, EA =1'b0, GM=1'b0; //ValidPass,BalanceCheck,EnteredAmount, goMain
+#     18              2                          1     
+#     18              3                          1     
+#     18              4                          1     
+#     19                                               
+#     20                                               parameter  IDLE = 4'b0000,
+#     21                                               			S1  = 4'b0001,
+#     22                                               			S2  = 4'b0010,
+#     23                                               			S3  = 4'b0011,
+#     24                                               			S4  = 4'b0100,
+#     25                                               			S5  = 4'b0101,
+#     26                                               			S6  = 4'b0110,
+#     27                                               			S7  = 4'b0111,
+#     28                                               			S8  = 4'b1000,
+#     29                                               			S9  = 4'b1001,
+#     30                                               			reset = 4'b1111;	
+#     31                                               				
+#     32              1                      27613     always @( posedge clk or posedge rst)
+#     33                                               	begin
+#     34                                               		if (rst)
+#     35                                               			begin
+#     36              1                       9687     				current_state <= reset;
+#     37                                               			end
+#     38              1                      17926     		else	current_state <= next_state;
+#     39                                               	end
+#     40                                               	
+#     41                                               //psl assert always(Operation >= 0 && Operation < 4) @(posedge clk);	
+#     42                                               //psl assert always(balance >=0) @(posedge clk);
+#     43                                               //psl assert never(next_state == S5 && op != 2'b01) @(posedge clk);
+#     44                                               //psl assert never(next_state == S8 && current_state == S5 && EA == 0) @(posedge clk);
+#     45                                               //psl assert never(next_state == S9 && current_state == S7 && BC == 0) @(posedge clk);
+#     46                                               //psl assert never(next_state == S3 && current_state == S2 && VP == 0) @(posedge clk);
+#     47                                               
+#     48                                               		
+#     49              1                      76960     always@(*)
+#     50                                               	begin
+#     51              1                      76960     		CB = balance;
+#     52                                               		case (current_state)
+#     53              1                       8876     			IDLE:	if(IC) next_state = S1;
+#     54              1                       9555     					else next_state = IDLE;
+#     55                                               	
+#     56              1                       2598     			S1: if(LC) next_state = S2;
+#     57              1                       1869     				 else next_state = S1;
+#     58                                               			
+#     59                                               			S2: 
+#     60                                               				begin
+#     61              1                          9     					if(Ex)next_state = reset;
+#     62              1                       2070     					else next_state = S2;
+#     63              1                       1285     					if(Pin==pin_number) VP = 1'b1;
+#     64              1                        794     					else VP = 1'b0;
+#     65                                               					if(VP) 
+#     66                                               						begin 
+#     67              1                       1285     						next_state = S3; 				
+#     68                                               						end
+#     69                                               					else 
+#     70                                               						begin
+#     71              1                        794     							Counter = Counter + 1'b1;
+#     72              1                        794     							next_state = S2; //added to be checked
+#     73                                               							if(Counter == 2'b11)
+#     74              1                        165     								next_state = reset;
+#     75                                               						end
+#     76                                               				end
+#     77                                               			S3:					    
+#     78                                               				begin
+#     79              1                       7132     					#1;
+#     80              1                       7132     					op = Operation; //in verfication force user to exit as we dont have time
+#     81              1                       2142     					if(op == 2'b00) next_state = S4;
+#     82              1                       2133     					else if(op == 2'b01) next_state = S5;
+#     83              1                       1867     					else if(op == 2'b10) next_state = S6;
+#     84              1                        990     					else next_state = reset;
+#     85                                               				end
+#     86                                               				
+#     87                                               			S4:
+#     88                                               				begin
+#     89              1                        627     					if(goMain)next_state = S3;
+#     90                                               					else 
+#     91                                               					begin
+#     92              1                       2543     						if(WithDraw_Amount > 0) EA = 1'b1; 
+#     93              1                       1023     						else EA = 1'b0;
+#     94              1                       2543     						if(EA) next_state = S7;
+#     95              1                       1023     						else next_state = S4;
+#     96                                               					end 
+#     97                                               				end
+#     98                                               			
+#     99                                               			S5:
+#     100                                              				begin
+#     101             1                       2051     					if(Deposit_Amount > 0) EA = 1'b1; 
+#     102             1                        149     					else EA = 1'b0;
+#     103             1                       2051     					if(EA)next_state = S8;
+#     104             1                        149     					else next_state = S5;
+#     105                                              				end
+#     106                                              				
+#     107                                              			S6:
+#     108                                              				begin
+#     109             1                       1646     					FinalBalance = balance;
+#     110             1                       1646     					next_state = S3;
+#     111                                              				end
+#     112                                              			S7:
+#     113                                              				begin
+#     114             1                       1215     					if(WithDraw_Amount <= balance) BC = 1'b1;
+#     115             1                       1408     					else BC = 1'b0;
+#     116             1                       1215     					if(BC) next_state = S9;
+#     117             1                       1408     					else next_state = S4;
+#     118                                              				end
+#     119                                              			S8: 
+#     120                                              				begin
+#     121             1                       2076     					balance = balance + Deposit_Amount;
+#     122             1                       2076     					next_state = S3;
+#     123                                              				end
+#     124                                              			S9:
+#     125                                              				begin
+#     126             1                       1391     					balance = balance - WithDraw_Amount;
+#     127             1                       1391     					next_state = S3; //TO BE SET TO S3
+#     128                                              				end
+#     129                                              			reset:
+#     130                                              				begin
+#     131             1                      30721     					next_state = IDLE;
+#     132             1                      30721     					VP = 1'b0; BC= 1'b0; EA =1'b0; GM=1'b0;
+#     132             2                      30721     
+#     132             3                      30721     
+#     132             4                      30721     
+#     133             1                      30721     					Counter = 2'b00;
+#     134             1                      30721     					balance = 50;
+#     135             1                      30721     					FinalBalance = 8'b0;
+#     136                                              				end
+#     137                                              			default:
+#     138                                              				begin
+#     139             1                          1     					next_state = reset;
+#     140             1                          1     					FinalBalance = 8'b0;
+#     141                                              				end
+#     142                                              		endcase
+#     143                                              	end
+#     144                                              
+#     145                                              endmodule
+# 
+# Branch Coverage:
+#     Enabled Coverage            Active      Hits    Misses % Covered
+#     ----------------            ------      ----    ------ ---------
+#     Branches                        44        44         0    100.00
+# 
+# ================================Branch Details================================
+# 
+# Branch Coverage for file MainModule.v --
+# 
+# ------------------------------------IF Branch------------------------------------
+#     34                                     27613     Count coming in to IF
+#     34              1                       9687     		if (rst)
+#     38              1                      17926     		else	current_state <= next_state;
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------CASE Branch------------------------------------
+#     52                                     76960     Count coming in to CASE
+#     53              1                      18431     			IDLE:	if(IC) next_state = S1;
+#     56              1                       4467     			S1: if(LC) next_state = S2;
+#     59              1                       2079     			S2: 
+#     77              1                       7132     			S3:					    
+#     87              1                       4193     			S4:
+#     99              1                       2200     			S5:
+#     107             1                       1646     			S6:
+#     112             1                       2623     			S7:
+#     119             1                       2076     			S8: 
+#     124             1                       1391     			S9:
+#     129             1                      30721     			reset:
+#     137             1                          1     			default:
+# Branch totals: 12 hits of 12 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     53                                     18431     Count coming in to IF
+#     53              2                       8876     			IDLE:	if(IC) next_state = S1;
+#     54              1                       9555     					else next_state = IDLE;
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     56                                      4467     Count coming in to IF
+#     56              2                       2598     			S1: if(LC) next_state = S2;
+#     57              1                       1869     				 else next_state = S1;
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     61                                      2079     Count coming in to IF
+#     61              1                          9     					if(Ex)next_state = reset;
+#     62              1                       2070     					else next_state = S2;
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     63                                      2079     Count coming in to IF
+#     63              1                       1285     					if(Pin==pin_number) VP = 1'b1;
+#     64              1                        794     					else VP = 1'b0;
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     65                                      2079     Count coming in to IF
+#     65              1                       1285     					if(VP) 
+#     69              1                        794     					else 
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     73                                       794     Count coming in to IF
+#     73              1                        165     							if(Counter == 2'b11)
+#                                              629     All False Count
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     81                                      7132     Count coming in to IF
+#     81              1                       2142     					if(op == 2'b00) next_state = S4;
+#     82              1                       2133     					else if(op == 2'b01) next_state = S5;
+#     83              1                       1867     					else if(op == 2'b10) next_state = S6;
+#     84              1                        990     					else next_state = reset;
+# Branch totals: 4 hits of 4 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     89                                      4193     Count coming in to IF
+#     89              1                        627     					if(goMain)next_state = S3;
+#     90              1                       3566     					else 
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     92                                      3566     Count coming in to IF
+#     92              1                       2543     						if(WithDraw_Amount > 0) EA = 1'b1; 
+#     93              1                       1023     						else EA = 1'b0;
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     94                                      3566     Count coming in to IF
+#     94              1                       2543     						if(EA) next_state = S7;
+#     95              1                       1023     						else next_state = S4;
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     101                                     2200     Count coming in to IF
+#     101             1                       2051     					if(Deposit_Amount > 0) EA = 1'b1; 
+#     102             1                        149     					else EA = 1'b0;
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     103                                     2200     Count coming in to IF
+#     103             1                       2051     					if(EA)next_state = S8;
+#     104             1                        149     					else next_state = S5;
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     114                                     2623     Count coming in to IF
+#     114             1                       1215     					if(WithDraw_Amount <= balance) BC = 1'b1;
+#     115             1                       1408     					else BC = 1'b0;
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# ------------------------------------IF Branch------------------------------------
+#     116                                     2623     Count coming in to IF
+#     116             1                       1215     					if(BC) next_state = S9;
+#     117             1                       1408     					else next_state = S4;
+# Branch totals: 2 hits of 2 branches = 100.00%
+# 
+# 
+# Condition Coverage:
+#     Enabled Coverage            Active   Covered    Misses % Covered
+#     ----------------            ------      ----    ------ ---------
+#     FEC Condition Terms              8         8         0    100.00
+# 
+# ================================Condition Details================================
+# 
+# Condition Coverage for file MainModule.v --
+# 
+# ----------------Focused Condition View-------------------
+# Line       63 Item    1  (Pin == pin_number)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#            Input Term   Covered  Reason for no coverage   Hint
+#           -----------  --------  -----------------------  --------------
+#   (Pin == pin_number)         Y
+# 
+#      Rows:       Hits  FEC Target             Non-masking condition(s)      
+#  ---------  ---------  --------------------   -------------------------     
+#   Row   1:          1  (Pin == pin_number)_0  -                             
+#   Row   2:          1  (Pin == pin_number)_1  -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       73 Item    1  (Counter == 3)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#       Input Term   Covered  Reason for no coverage   Hint
+#      -----------  --------  -----------------------  --------------
+#   (Counter == 3)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (Counter == 3)_0      -                             
+#   Row   2:          1  (Counter == 3)_1      -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       81 Item    1  (op == 0)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#    (op == 0)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (op == 0)_0           -                             
+#   Row   2:          1  (op == 0)_1           -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       82 Item    1  (op == 1)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#    (op == 1)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (op == 1)_0           -                             
+#   Row   2:          1  (op == 1)_1           -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       83 Item    1  (op == 2)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#   Input Term   Covered  Reason for no coverage   Hint
+#  -----------  --------  -----------------------  --------------
+#    (op == 2)         Y
+# 
+#      Rows:       Hits  FEC Target            Non-masking condition(s)      
+#  ---------  ---------  --------------------  -------------------------     
+#   Row   1:          1  (op == 2)_0           -                             
+#   Row   2:          1  (op == 2)_1           -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       92 Item    1  (WithDraw_Amount > 0)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#              Input Term   Covered  Reason for no coverage   Hint
+#             -----------  --------  -----------------------  --------------
+#   (WithDraw_Amount > 0)         Y
+# 
+#      Rows:       Hits  FEC Target               Non-masking condition(s)      
+#  ---------  ---------  --------------------     -------------------------     
+#   Row   1:          1  (WithDraw_Amount > 0)_0  -                             
+#   Row   2:          1  (WithDraw_Amount > 0)_1  -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       101 Item    1  (Deposit_Amount > 0)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#             Input Term   Covered  Reason for no coverage   Hint
+#            -----------  --------  -----------------------  --------------
+#   (Deposit_Amount > 0)         Y
+# 
+#      Rows:       Hits  FEC Target              Non-masking condition(s)      
+#  ---------  ---------  --------------------    -------------------------     
+#   Row   1:          1  (Deposit_Amount > 0)_0  -                             
+#   Row   2:          1  (Deposit_Amount > 0)_1  -                             
+# 
+# ----------------Focused Condition View-------------------
+# Line       114 Item    1  (WithDraw_Amount <= balance)
+# Condition totals: 1 of 1 input term covered = 100.00%
+# 
+#                     Input Term   Covered  Reason for no coverage   Hint
+#                    -----------  --------  -----------------------  --------------
+#   (WithDraw_Amount <= balance)         Y
+# 
+#      Rows:       Hits  FEC Target                      Non-masking condition(s)      
+#  ---------  ---------  --------------------            -------------------------     
+#   Row   1:          1  (WithDraw_Amount <= balance)_0  -                             
+#   Row   2:          1  (WithDraw_Amount <= balance)_1  -                             
+# 
+# 
+# FSM Coverage:
+#     Enabled Coverage            Active      Hits    Misses % Covered
+#     ----------------            ------      ----    ------ ---------
+#     FSMs                                                       96.00
+#         States                      11        11         0    100.00
+#         Transitions                 25        23         2     92.00
+# 
+# ================================FSM Details================================
+# 
+# FSM Coverage for file MainModule.v --
+# 
+# FSM_ID: current_state
+#     Current State Object : current_state
+#     ----------------------
+#     State Value MapInfo :
+#     ---------------------
+# Line          State Name               Value
+# ----          ----------               -----
+#   53                IDLE                   0
+#   56                  S1                   1
+#   59                  S2                   2
+#  129               reset                  15
+#   77                  S3                   3
+#  107                  S6                   6
+#   99                  S5                   5
+#   87                  S4                   4
+#  112                  S7                   7
+#  119                  S8                   8
+#  124                  S9                   9
+#     Covered States :
+#     ----------------
+#                    State           Hit_count
+#                    -----           ---------
+#                     IDLE                6172
+#                       S1                1907
+#                       S2                1214
+#                    reset               10524
+#                       S3                2400
+#                       S6                 455
+#                       S5                 570
+#                       S4                1791
+#                       S7                1496
+#                       S8                 537
+#                       S9                 547
+#     Covered Transitions :
+#     ---------------------
+# Line            Trans_ID           Hit_count          Transition          
+# ----            --------           ---------          ----------          
+#   53                   0                1757          IDLE -> S1          
+#   36                   1                3621          IDLE -> reset       
+#   56                   2                1020          S1 -> S2            
+#   36                   3                 737          S1 -> reset         
+#   74                   4                 258          S2 -> reset         
+#   67                   5                 762          S2 -> S3            
+#  131                   6                5378          reset -> IDLE       
+#   84                   7                 756          S3 -> reset         
+#   83                   8                 451          S3 -> S6            
+#   82                   9                 540          S3 -> S5            
+#   81                  10                 653          S3 -> S4            
+#  110                  11                 451          S6 -> S3            
+#   36                  12                   3          S6 -> reset         
+#  103                  13                 537          S5 -> S8            
+#   36                  14                   9          S5 -> reset         
+#   94                  15                1496          S4 -> S7            
+#   89                  16                 108          S4 -> S3            
+#   36                  17                   1          S4 -> reset         
+#  117                  18                 948          S7 -> S4            
+#  116                  19                 547          S7 -> S9            
+#  122                  21                 532          S8 -> S3            
+#   36                  22                   5          S8 -> reset         
+#  127                  23                 547          S9 -> S3            
+#     Uncovered Transitions :
+#     -----------------------
+# Line            Trans_ID          Transition          
+# ----            --------          ----------          
+#   36                  20          S7 -> reset         
+#   36                  24          S9 -> reset         
+# 
+# 
+#     Summary                     Active      Hits    Misses % Covered
+#     -------                     ------      ----    ------ ---------
+#         States                      11        11         0    100.00
+#         Transitions                 25        23         2     92.00
+# Toggle Coverage:
+#     Enabled Coverage            Active      Hits    Misses % Covered
+#     ----------------            ------      ----    ------ ---------
+#     Toggle Bins                    126       124         2     98.41
+# 
+# ================================Toggle Details================================
+# 
+# Toggle Coverage for File MainModule.v --
+# 
+#        Line                                   Node      1H->0L      0L->1H  "Coverage"
+# --------------------------------------------------------------------------------------
+#           3                                    clk           1           1      100.00 
+#           4                                    rst           1           1      100.00 
+#           5                                 Pin[3]           1           1      100.00 
+#           5                                 Pin[2]           1           1      100.00 
+#           5                                 Pin[1]           1           1      100.00 
+#           5                                 Pin[0]           1           1      100.00 
+#           6                     WithDraw_Amount[5]           1           1      100.00 
+#           6                     WithDraw_Amount[4]           1           1      100.00 
+#           6                     WithDraw_Amount[3]           1           1      100.00 
+#           6                     WithDraw_Amount[2]           1           1      100.00 
+#           6                     WithDraw_Amount[1]           1           1      100.00 
+#           6                     WithDraw_Amount[0]           1           1      100.00 
+#           7                      Deposit_Amount[4]           1           1      100.00 
+#           7                      Deposit_Amount[3]           1           1      100.00 
+#           7                      Deposit_Amount[2]           1           1      100.00 
+#           7                      Deposit_Amount[1]           1           1      100.00 
+#           7                      Deposit_Amount[0]           1           1      100.00 
+#           8                           Operation[1]           1           1      100.00 
+#           8                           Operation[0]           1           1      100.00 
+#           9                        FinalBalance[7]           1           1      100.00 
+#           9                        FinalBalance[6]           1           1      100.00 
+#           9                        FinalBalance[5]           1           1      100.00 
+#           9                        FinalBalance[4]           1           1      100.00 
+#           9                        FinalBalance[3]           1           1      100.00 
+#           9                        FinalBalance[2]           1           1      100.00 
+#           9                        FinalBalance[1]           1           1      100.00 
+#           9                        FinalBalance[0]           1           1      100.00 
+#           9                                  CB[7]           1           1      100.00 
+#           9                                  CB[6]           1           1      100.00 
+#           9                                  CB[5]           1           1      100.00 
+#           9                                  CB[4]           1           1      100.00 
+#           9                                  CB[3]           1           1      100.00 
+#           9                                  CB[2]           1           1      100.00 
+#           9                                  CB[1]           1           1      100.00 
+#           9                                  CB[0]           1           1      100.00 
+#          10                                 goMain           1           1      100.00 
+#          10                                     LC           1           1      100.00 
+#          10                                     IC           1           1      100.00 
+#          10                                     Ex           1           1      100.00 
+#          13                             balance[7]           1           1      100.00 
+#          13                             balance[6]           1           1      100.00 
+#          13                             balance[5]           1           1      100.00 
+#          13                             balance[4]           1           1      100.00 
+#          13                             balance[3]           1           1      100.00 
+#          13                             balance[2]           1           1      100.00 
+#          13                             balance[1]           1           1      100.00 
+#          13                             balance[0]           1           1      100.00 
+#          14                          next_state[3]           1           1      100.00 
+#          14                          next_state[2]           1           1      100.00 
+#          14                          next_state[1]           1           1      100.00 
+#          14                          next_state[0]           1           1      100.00 
+#          15                       current_state[3]           1           1      100.00 
+#          15                       current_state[2]           1           1      100.00 
+#          15                       current_state[1]           1           1      100.00 
+#          15                       current_state[0]           1           1      100.00 
+#          16                             Counter[1]           1           1      100.00 
+#          16                             Counter[0]           1           1      100.00 
+#          17                                  op[1]           1           1      100.00 
+#          17                                  op[0]           1           1      100.00 
+#          18                                     VP           1           1      100.00 
+#          18                                     GM           0           0        0.00 
+#          18                                     EA           1           1      100.00 
+#          18                                     BC           1           1      100.00 
+# 
+# Total Node Count     =         63 
+# Toggled Node Count   =         62 
+# Untoggled Node Count =          1 
+# 
+# Toggle Coverage      =      98.41% (124 of 126 bins)
+# 
+# 
+# ASSERTION RESULTS:
+# --------------------------------------------------------------------
+# Name                 File(Line)                   Failure      Pass 
+#                                                   Count        Count
+# --------------------------------------------------------------------
+# /ATM_tb/uut/assert__5
+#                      MainModule.v(46)                   0          1
+# /ATM_tb/uut/assert__4
+#                      MainModule.v(45)                   0          1
+# /ATM_tb/uut/assert__3
+#                      MainModule.v(44)                   0          1
+# /ATM_tb/uut/assert__2
+#                      MainModule.v(43)                   0          1
+# /ATM_tb/uut/assert__1
+#                      MainModule.v(42)                   0          1
+# /ATM_tb/uut/assert__0
+#                      MainModule.v(41)                   0          1
+# 
+# Total Coverage By File (code coverage only, filtered view): 90.41%
+# 
+# End time: 22:13:01 on Dec 18,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
